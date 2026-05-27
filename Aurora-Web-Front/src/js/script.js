@@ -24,4 +24,10 @@ function iniciarTemas() {
             amber: "#FF4444",
         },
     };
+    function trocarTema(idTema) {
+        const tema = temas[idTema];
+        pagina.style.setProperty("--bg", tema.bg);
+        pagina.style.setProperty("--navy", tema.navy);
+        pagina.style.setProperty("--amber", tema.amber);
+    }
 }
