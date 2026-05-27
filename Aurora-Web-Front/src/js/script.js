@@ -30,4 +30,9 @@ function iniciarTemas() {
         pagina.style.setProperty("--navy", tema.navy);
         pagina.style.setProperty("--amber", tema.amber);
     }
+    botoesTema.forEach(function (botao) {
+        botao.addEventListener("change", function () {
+            trocarTema(botao.id);
+        });
+    });
 }
