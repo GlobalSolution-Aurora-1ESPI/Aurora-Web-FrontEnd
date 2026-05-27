@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AURORA · Sistema de Gestão Energética Lunar</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="src/css/style.css">
+</head>
+<body>
+    <!-- SELETOR DE TEMAS (radio inputs hidden — CSS puro, sem JS) -->
+    <input type="radio" id="tema-dia" name="tema" checked>
+    <input type="radio" id="tema-noite" name="tema">
+    <input type="radio" id="tema-alerta" name="tema">
+
+    <div class="page-wrapper">
+
+        <!-- MENU DE NAVEGAÇÃO -->
+        <nav class="nav">
+            <div class="nav__logo">AURORA</div>
+            <ul class="nav__links">
+                <li><a href="#problema">Problema</a></li>
+                <li><a href="#tecnologia">Tecnologia</a></li>
+                <li><a href="#objetivos">Objetivos</a></li>
+                <li><a href="#publico">Público-alvo</a></li>
+                <li><a href="#beneficios">Benefícios</a></li>
+                <li><a href="#aplicacao">Aplicação</a></li>
+            </ul>
+            <div class="nav__temas">
+                <label for="tema-dia" class="btn-tema">Dia</label>
+                <label for="tema-noite" class="btn-tema">Noite</label>
+                <label for="tema-alerta" class="btn-tema">Alerta</label>
+            </div>
+        </nav>
+
+        <!-- HERO (banner de entrada) -->
+        <header class="hero">
+            <p class="hero__tag">Indústria Espacial · Programa Artemis</p>
+            <h1 class="hero__title">AURORA</h1>
+            <p class="hero__sub">O código que mantém a luz acesa na noite mais longa.</p>
+            <a href="#problema" class="hero__cta">Conheça a missão</a>
+        </header>
+
+        <!-- SEÇÃO 1: PROBLEMA -->
+        <section id="problema" class="section section--alt">
+            <div class="section__inner">
+                <h2 class="section__title">A Noite Mais Longa</h2>
+                <div class="section__content">
+                    <div class="section__text">
+                        <p>Na Lua, a noite dura 14 dias. Sem energia, o suporte à vida falha em horas.</p>
+                        <p>Bases do programa Artemis precisam de gestão energética autônoma para sobreviver.</p>
+                    </div>
+                    <div class="section__img">
+                        <img src="img/base-lunar.jpg" alt="Base lunar com painéis solares no horizonte">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 2: TECNOLOGIA -->
+        <section id="tecnologia" class="section">
+            <div class="section__inner">
+                <h2 class="section__title">O Sistema Embarcado</h2>
+                <div class="section__content">
+                    <div class="section__text">
+                        <p>Arduino e sensores na borda, console em Python e modelo matemático de autonomia.</p>
+                        <p>Um sistema que decide e age sozinho — sem precisar de intervenção humana.</p>
+                    </div>
+                    <div class="section__img">
+                        <img src="img/console.jpg" alt="Console de operações AURORA exibindo dados da base">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 3: OBJETIVOS -->
+        <section id="objetivos" class="section section--alt">
+            <div class="section__inner">
+                <h2 class="section__title">Missão AURORA</h2>
+                <div class="section__cards">
+                    <div class="card">
+                        <span class="card__icon">⚡</span>
+                        <h3>Monitorar</h3>
+                        <p>Energia, temperatura e qualidade do ar em tempo real.</p>
+                    </div>
+                    <div class="card">
+                        <span class="card__icon">🔀</span>
+                        <h3>Priorizar</h3>
+                        <p>Cargas críticas protegidas, supérfluas cortadas automaticamente.</p>
+                    </div>
+                    <div class="card">
+                        <span class="card__icon">🕐</span>
+                        <h3>Prever</h3>
+                        <p>Autonomia restante calculada em tempo real pela função exponencial.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 4: PÚBLICO -->
+        <section id="publico" class="section">
+            <div class="section__inner">
+                <h2 class="section__title">Para Quem Voamos</h2>
+                <div class="section__content">
+                    <div class="section__text">
+                        <p>Operadores de bases lunares que precisam manter sistemas vivos com energia limitada.</p>
+                        <p>E comunidades isoladas na Terra com energia solar e sem acesso à rede elétrica.</p>
+                    </div>
+                    <div class="section__img">
+                        <img src="img/paineis-noite.jpg" alt="Painéis solares apagados durante a noite lunar">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 5: BENEFÍCIOS -->
+        <section id="beneficios" class="section section--alt">
+            <div class="section__inner">
+                <h2 class="section__title">Falhar com Elegância</h2>
+                <div class="section__cards">
+                    <div class="card">
+                        <span class="card__icon">🤖</span>
+                        <h3>Decisão Automática</h3>
+                        <p>O sistema corta o supérfluo antes que a energia acabe.</p>
+                    </div>
+                    <div class="card">
+                        <span class="card__icon">🔔</span>
+                        <h3>Alerta Precoce</h3>
+                        <p>Aviso antes do limite crítico, tempo suficiente para reagir.</p>
+                    </div>
+                    <div class="card">
+                        <span class="card__icon">🛡️</span>
+                        <h3>Sobrevivência</h3>
+                        <p>Sistemas de suporte à vida sempre protegidos em emergência.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 6: APLICAÇÃO -->
+        <section id="aplicacao" class="section">
+            <div class="section__inner">
+                <h2 class="section__title">AURORA na Prática</h2>
+                <div class="section__content">
+                    <div class="section__text">
+                        <p>Na base ou na Terra: o sistema corta o supérfluo e mantém o essencial vivo.</p>
+                        <p>O mesmo código que protege astronautas pode iluminar uma vila sem rede elétrica.</p>
+                    </div>
+                    <div class="section__steps">
+                        <div class="step"><span class="step__num">1</span><p>Sensores leem energia e ambiente</p></div>
+                        <div class="step"><span class="step__num">2</span><p>Sistema classifica o estado</p></div>
+                        <div class="step"><span class="step__num">3</span><p>Corte automático se necessário</p></div>
+                        <div class="step"><span class="step__num">4</span><p>Essencial permanece protegido</p></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- RODAPÉ -->
+        <footer class="footer">
+            <p class="footer__logo">AURORA</p>
+            <p class="footer__sub">FIAP · Global Solution 2026 · Engenharia de Software</p>
+            <p class="footer__team">
+                [Nome RM] · [Nome RM] · [Nome RM] · [Nome RM] · [Nome RM]
+            </p>
+        </footer>
+
+    </div><!-- fim .page-wrapper -->
+</body>
+</html>
