@@ -78,6 +78,22 @@ O que foi mantido, alterado ou rejeitado:
 - Foram mantidas apenas as alteracoes consideradas uteis para a entrega.
 - O aluno revisou os arquivos antes de commitar e enviar ao repositorio.
 
+## 5. README do projeto
+
+O que foi pedido para a IA:
+
+- Apoio para criar um `README.md` contextualizando todo o projeto AURORA.
+
+O que a IA retornou:
+
+- Um README com descrição do projeto, funcionalidades, tecnologias utilizadas, estrutura de pastas, forma de execução, referência ao arquivo de equipe, referencia ao `AI.md` e link do repositório.
+
+O que foi mantido, alterado ou rejeitado:
+
+- Foi mantida a estrutura geral sugerida para o README.
+- A árvore de pastas foi ajustada para caracteres simples, evitando problemas de codificação.
+- O conteudo foi revisado antes de ser mantido no projeto.
+
 ## Observacao final
 
-A IA foi utilizada como apoio para orientacao, depuracao e revisao. A implementacao final foi revisada pelo aluno antes da entrega.
+A IA foi utilizada como apoio para orientação, depuração e revisão. A implementação final foi revisada pelo aluno antes da entrega.
