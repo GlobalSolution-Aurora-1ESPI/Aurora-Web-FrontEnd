@@ -1,6 +1,6 @@
 console.log("JavaScript carregado com sucesso!");
 iniciarTemas();
-iniciarSlideshow();
+//iniciarSlideshow();
 iniciarFormulario();
 iniciarQuiz();
 function iniciarTemas() {
@@ -34,5 +34,16 @@ function iniciarTemas() {
         botao.addEventListener("change", function () {
             trocarTema(botao.id);
         });
+    });
+}
+function iniciarFormulario() {
+    const formulario = document.getElementById("form-missao");
+    
+    if (!formulario) return;
+    formulario.addEventListener("submit", function (event) {
+        event.preventDefault();
+        const nome = document.getElementById("nome").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const mensagem = document.getElementById("mensagem").value.trim();
     });
 }
