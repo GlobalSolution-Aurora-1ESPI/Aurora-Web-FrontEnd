@@ -425,6 +425,15 @@ function iniciarFormulario() {
         }
 
         formulario.classList.remove("tentou-enviar");
+
+        const dadosFormulario = {
+            nome: document.getElementById("nome").value,
+            email: document.getElementById("email").value,
+            mensagem: document.getElementById("mensagem").value,
+        };
+
+        console.log("Dados do formulario:", dadosFormulario);
+
         formulario.reset();
 
         if (feedback) {
