@@ -439,7 +439,7 @@ function iniciarQuiz() {
     const perguntas = [
         {
             pergunta: "Quanto tempo dura a noite lunar em dias na Terra?",
-            respostas: ["1 dia", "14 dias", "5 dias", "16 dias"],
+            alternativas: ["1 dia", "14 dias", "5 dias", "16 dias"],
             correta: 1
         }
     ];
@@ -477,5 +477,5 @@ function iniciarQuiz() {
         }
     }
 
-    renderizarPergunta();
+    mostrarPergunta();
 }
