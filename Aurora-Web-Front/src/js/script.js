@@ -46,6 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
     iniciarTemas();
     iniciarSlideshow();
     iniciarFormulario();
+    iniciarQuiz();
 });
 
 function iniciarTemas() {
@@ -430,4 +431,51 @@ function iniciarFormulario() {
             feedback.textContent = "Mensagem realizada com sucesso. Agradecemos seu contato!";
         }
     });
+}
+function iniciarQuiz() {
+    const container = document.getElementById("quiz-container");
+    if(!container) return;
+
+    const perguntas = [
+        {
+            pergunta: "Quanto tempo dura a noite lunar em dias na Terra?",
+            respostas: ["1 dia", "14 dias", "5 dias", "16 dias"],
+            correta: 1
+        }
+    ];
+
+    let perguntaAtual = 0;
+    let pontuacao = 0;
+
+    function mostrarPergunta() {
+        const item = perguntas[perguntaAtual];
+        container.innerHTML = `
+            <p>Pergunta ${perguntaAtual + 1} de ${perguntas.length}</p>
+            <h3>${item.pergunta}</h3>
+            <div class="quiz__alternativas"></div>
+        `;
+        const areaAlternativas = container.querySelector(".quiz__alternativas");
+        item.alternativas.forEach(function(alternativa, indice){
+            const botao = document.createElement("button");
+            botao.type = "button";
+            botao.textContent = alternativa;
+            botao.classList.add("quiz__alternativa");
+            botao.addEventListener("click", function(){
+                responder(indice, botao);
+            });
+            areaAlternativas.appendChild(botao);
+        });
+    }
+
+    function responder(indiceEscolhido, botaoEscolhido) {
+        const indiceCorreto = perguntas[perguntaAtual].correta;
+        if (indiceEscolhido === indiceCorreto) {
+            botaoEscolhido.classList.add("correta");
+            pontuacao++;
+        } else {
+            botaoEscolhido.classList.add("errada");
+        }
+    }
+
+    renderizarPergunta();
 }
