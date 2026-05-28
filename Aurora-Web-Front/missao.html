@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AURORA · Missão</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="src/css/style.css">
+</head>
+<body id="topo">
+    <!-- SELETOR DE TEMAS (radio inputs hidden — CSS puro, sem JS) -->
+    <input type="radio" id="tema-dia" name="tema">
+    <input type="radio" id="tema-noite" name="tema" checked>
+    <input type="radio" id="tema-alerta" name="tema">
+
+    <div class="page-wrapper">
+
+        <!-- MENU DE NAVEGAÇÃO -->
+        <nav class="nav">
+            <a href="index.html#topo" class="nav__logo" aria-label="Voltar para a home">AURORA</a>
+            <ul class="nav__links">
+                <li><a href="index.html#problema">Problema</a></li>
+                <li><a href="index.html#tecnologia">Tecnologia</a></li>
+                <li><a href="index.html#objetivos">Objetivos</a></li>
+                <li><a href="index.html#publico">Público-alvo</a></li>
+                <li><a href="index.html#beneficios">Benefícios</a></li>
+                <li><a href="index.html#aplicacao">Aplicação</a></li>
+                <li><a href="index.html#contato">Contato</a></li>
+                <li><a href="missao.html" class="nav__link--active" aria-current="page">Missão</a></li>
+            </ul>
+            <div class="nav__temas">
+                <label for="tema-dia" class="btn-tema">Dia</label>
+                <label for="tema-noite" class="btn-tema">Noite</label>
+                <label for="tema-alerta" class="btn-tema">Alerta</label>
+            </div>
+        </nav>
+
+        <!-- HERO DA MISSÃO -->
+        <header class="mission-hero">
+            <div class="mission-hero__inner">
+                <p class="mission-hero__tag">INDÚSTRIA ESPACIAL · PROGRAMA ARTEMIS</p>
+                <h1 class="mission-hero__title">Missão AURORA</h1>
+                <p class="mission-hero__sub">Monitorar energia, priorizar cargas críticas e prever autonomia para manter sistemas essenciais vivos.</p>
+                <a href="#contexto" class="hero__cta">Explorar missão</a>
+            </div>
+        </header>
+
+        <!-- SEÇÃO 1: CONTEXTO -->
+        <section id="contexto" class="section section--alt">
+            <div class="section__inner">
+                <h2 class="section__title">A Noite Mais Longa</h2>
+                <div class="section__content">
+                    <div class="section__text">
+                        <p>Na Lua, a noite dura 14 dias. Sem energia, o suporte à vida falha em horas.</p>
+                        <p>Bases do programa Artemis precisam sobreviver com energia limitada e decisões automáticas.</p>
+                    </div>
+                    <div class="mission-panel" aria-label="Resumo do problema">
+                        <div class="mission-panel__item">
+                            <span class="mission-panel__value">14</span>
+                            <p>dias de noite lunar</p>
+                        </div>
+                        <div class="mission-panel__item">
+                            <span class="mission-panel__value">ODS 9</span>
+                            <p>inovação e infraestrutura como eixo do projeto</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 2: OBJETIVOS -->
+        <section id="missao-objetivos" class="section">
+            <div class="section__inner">
+                <h2 class="section__title">O Que a AURORA Faz</h2>
+                <div class="section__cards">
+                    <div class="card">
+                        <span class="card__icon">01</span>
+                        <h3>Monitorar</h3>
+                        <p>Energia, ambiente e estado da base em tempo real.</p>
+                    </div>
+                    <div class="card">
+                        <span class="card__icon">02</span>
+                        <h3>Priorizar</h3>
+                        <p>Cargas críticas protegidas, cargas não essenciais cortadas primeiro.</p>
+                    </div>
+                    <div class="card">
+                        <span class="card__icon">03</span>
+                        <h3>Prever</h3>
+                        <p>Autonomia restante calculada com função exponencial.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 3: TECNOLOGIA -->
+        <section id="missao-tecnologia" class="section section--alt">
+            <div class="section__inner">
+                <h2 class="section__title">Sistema Embarcado</h2>
+                <div class="section__content">
+                    <div class="section__text">
+                        <p>Arduino e sensores operam na borda, com console em Python para acompanhar a missão.</p>
+                        <p>LDR simula o Sol, servo motor corta a carga e a autonomia é modelada matematicamente.</p>
+                    </div>
+                    <div class="section__steps">
+                        <div class="step"><span class="step__num">1</span><p>Sensores leem luz, energia e ambiente.</p></div>
+                        <div class="step"><span class="step__num">2</span><p>O sistema calcula autonomia restante.</p></div>
+                        <div class="step"><span class="step__num">3</span><p>Cargas não essenciais são desligadas.</p></div>
+                        <div class="step"><span class="step__num">4</span><p>O essencial permanece protegido.</p></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 4: PÚBLICO -->
+        <section id="missao-publico" class="section">
+            <div class="section__inner">
+                <h2 class="section__title">Para Quem Voamos</h2>
+                <div class="section__content">
+                    <div class="section__text">
+                        <p>AURORA atende operadores de bases lunares que dependem de autonomia energética confiável.</p>
+                        <p>Na Terra, o mesmo conceito apoia comunidades isoladas com energia solar limitada.</p>
+                    </div>
+                    <div class="mission-list">
+                        <p>Base lunar Artemis</p>
+                        <p>Operação remota de sistemas críticos</p>
+                        <p>Microgrid off-grid em regiões isoladas</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 5: BENEFÍCIOS -->
+        <section id="missao-beneficios" class="section section--alt">
+            <div class="section__inner">
+                <h2 class="section__title">Falhar com Elegância</h2>
+                <div class="section__cards">
+                    <div class="card">
+                        <span class="card__icon">A</span>
+                        <h3>Decisão automática</h3>
+                        <p>O sistema age antes que a energia acabe.</p>
+                    </div>
+                    <div class="card">
+                        <span class="card__icon">B</span>
+                        <h3>Alerta precoce</h3>
+                        <p>A equipe recebe tempo para reagir ao estado crítico.</p>
+                    </div>
+                    <div class="card">
+                        <span class="card__icon">C</span>
+                        <h3>Sobrevivência</h3>
+                        <p>Sistemas de suporte à vida seguem priorizados na longa noite.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 6: REFERÊNCIAS DO ESCOPO -->
+        <section id="missao-escopo" class="section">
+            <div class="section__inner">
+                <h2 class="section__title">Escopo do Projeto</h2>
+                <div class="mission-grid">
+                    <div class="mission-grid__item">
+                        <h3>Front-End Design</h3>
+                        <p>Landing page com identidade navy e âmbar, Orbitron nos títulos, Inter no corpo e três temas por CSS puro.</p>
+                    </div>
+                    <div class="mission-grid__item">
+                        <h3>Web Development</h3>
+                        <p>Slideshow, formulário validado, quiz dinâmico e organização GitHub com branches e commits distribuídos.</p>
+                    </div>
+                    <div class="mission-grid__item">
+                        <h3>Inspiração</h3>
+                        <p>O alarme 1202 da Apollo 11 inspira a ideia de proteger o essencial sob pressão operacional.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- RODAPÉ -->
+        <footer class="footer">
+            <p class="footer__logo">AURORA</p>
+            <p class="footer__sub">FIAP · Global Solution 2026 · Engenharia de Software</p>
+            <p class="footer__team">
+                [Nome RM] · [Nome RM] · [Nome RM] · [Nome RM] · [Nome RM]
+            </p>
+        </footer>
+
+    </div><!-- fim .page-wrapper -->
+</body>
+</html>
