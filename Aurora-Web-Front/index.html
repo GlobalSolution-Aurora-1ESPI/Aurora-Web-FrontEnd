@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="src/css/style.css">
 </head>
 <body>
-    <script src="src/js/script.js"></script>
     <!-- SELETOR DE TEMAS (radio inputs hidden — CSS puro, sem JS) -->
     <input type="radio" id="tema-dia" name="tema" checked>
     <input type="radio" id="tema-noite" name="tema">
@@ -30,6 +29,7 @@
                 <li><a href="#publico">Público-alvo</a></li>
                 <li><a href="#beneficios">Benefícios</a></li>
                 <li><a href="#aplicacao">Aplicação</a></li>
+                <li><a href="#contato">Contato</a></li>
             </ul>
             <div class="nav__temas">
                 <label for="tema-dia" class="btn-tema">Dia</label>
@@ -161,6 +161,26 @@
             </div>
         </section>
 
+        <!-- FORMULARIO VALIDADO COM JAVASCRIPT -->
+        <section id="contato" class="section section--alt">
+            <div class="section__inner">
+                <h2 class="section__title">Junte-se a missao AURORA</h2>
+                <div class="section__content">
+                    <div class="section__text">
+                        <p>Quer acompanhar a missao ou contribuir com ideias para o sistema AURORA?</p>
+                        <p>Preencha o formulario abaixo para entrar em contato com a equipe.</p>
+                    </div>
+
+                    <form id="form-missao" class="form-missao" novalidate>
+                        <input type="text" id="nome" name="nome" placeholder="Seu nome">
+                        <input type="text" id="email" name="email" placeholder="Seu e-mail">
+                        <textarea id="mensagem" name="mensagem" placeholder="Sua mensagem"></textarea>
+                        <button type="submit">Enviar mensagem</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
         <!-- RODAPÉ -->
         <footer class="footer">
             <p class="footer__logo">AURORA</p>
@@ -171,5 +191,6 @@
         </footer>
 
     </div><!-- fim .page-wrapper -->
+    <script src="src/js/script.js"></script>
 </body>
 </html>

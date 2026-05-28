@@ -2,7 +2,7 @@ console.log("JavaScript carregado com sucesso!");
 iniciarTemas();
 //iniciarSlideshow();
 iniciarFormulario();
-iniciarQuiz();
+//iniciarQuiz();
 function iniciarTemas() {
     const pagina = document.querySelector(".page-wrapper");
     const botoesTema = document.querySelectorAll('input[name="tema"]');
@@ -42,8 +42,31 @@ function iniciarFormulario() {
     if (!formulario) return;
     formulario.addEventListener("submit", function (event) {
         event.preventDefault();
+        
         const nome = document.getElementById("nome").value.trim();
         const email = document.getElementById("email").value.trim();
         const mensagem = document.getElementById("mensagem").value.trim();
+
+        let valido = true;
+        if (nome === "") {
+            alert("Por favor, insira seu nome!");
+            valido = false;
+        }
+
+        const emailValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        if(!emailValido) {
+            alert("Por favor, insira um email válido!");
+            valido = false;
+        }
+
+        if(mensagem === "") {
+            alert("Por favor, insira uma mensagem!");
+            valido = false;
+        }
+
+        if(valido) {
+            formulario.reset();
+            alert("Sua mensagem foi realizada com sucesso! Agradecemos seu contato!");
+        }
     });
 }
