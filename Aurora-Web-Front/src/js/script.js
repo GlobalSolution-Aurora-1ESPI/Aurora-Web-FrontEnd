@@ -3,6 +3,7 @@ iniciarTemas();
 //iniciarSlideshow();
 iniciarFormulario();
 //iniciarQuiz();
+
 function iniciarTemas() {
     const pagina = document.querySelector(".page-wrapper");
     const botoesTema = document.querySelectorAll('input[name="tema"]');
@@ -24,49 +25,44 @@ function iniciarTemas() {
             amber: "#FF4444",
         },
     };
+
     function trocarTema(idTema) {
         const tema = temas[idTema];
+
         pagina.style.setProperty("--bg", tema.bg);
         pagina.style.setProperty("--navy", tema.navy);
         pagina.style.setProperty("--amber", tema.amber);
     }
+
     botoesTema.forEach(function (botao) {
         botao.addEventListener("change", function () {
             trocarTema(botao.id);
         });
     });
 }
+
 function iniciarFormulario() {
     const formulario = document.getElementById("form-missao");
-    
+    const feedback = document.getElementById("form-feedback");
+
     if (!formulario) return;
+
     formulario.addEventListener("submit", function (event) {
         event.preventDefault();
-        
-        const nome = document.getElementById("nome").value.trim();
-        const email = document.getElementById("email").value.trim();
-        const mensagem = document.getElementById("mensagem").value.trim();
 
-        let valido = true;
-        if (nome === "") {
-            alert("Por favor, insira seu nome!");
-            valido = false;
+        if (!formulario.checkValidity()) {
+            formulario.classList.add("tentou-enviar");
+            if (feedback) {
+                feedback.textContent = "Preencha todos os campos corretamente.";
+            }
+            return;
         }
 
-        const emailValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-        if(!emailValido) {
-            alert("Por favor, insira um email válido!");
-            valido = false;
-        }
+        formulario.classList.remove("tentou-enviar");
+        formulario.reset();
 
-        if(mensagem === "") {
-            alert("Por favor, insira uma mensagem!");
-            valido = false;
-        }
-
-        if(valido) {
-            formulario.reset();
-            alert("Sua mensagem foi realizada com sucesso! Agradecemos seu contato!");
+        if (feedback) {
+            feedback.textContent = "Mensagem realizada com sucesso. Agradecemos seu contato!";
         }
     });
 }
