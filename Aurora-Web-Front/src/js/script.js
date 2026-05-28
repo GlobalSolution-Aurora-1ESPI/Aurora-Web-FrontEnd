@@ -2,7 +2,7 @@ console.log("JavaScript carregado com sucesso!");
 iniciarTemas();
 //iniciarSlideshow();
 iniciarFormulario();
-//iniciarQuiz();
+iniciarQuiz();
 
 function iniciarTemas() {
     const pagina = document.querySelector(".page-wrapper");
