@@ -1,7 +1,7 @@
 // ========================================================
 // CONFIGURACAO DOS SLIDES - TROQUE AS IMAGENS AQUI
 // ========================================================
-// Coloque as imagens em /assets/hero/ com os nomes sugeridos.
+// Coloque as imagens em assets/hero/ com os nomes sugeridos.
 // Formatos aceitos: .webp (preferido), .jpg, .png ou .mp4.
 // Dimensao recomendada: 2560x1440px (16:9), max 500KB cada.
 // Enquanto a midia nao existir, o site mostra placeholders com gradiente.
@@ -10,19 +10,19 @@
 const SLIDES = [
     {
         id: 1,
-        src: "/assets/hero/slide-1.webp", // SUBSTITUIR
+        src: "assets/hero/slide-1.webp", // SUBSTITUIR
         alt: "Descricao da imagem 1",
         type: "image", // "image" ou "video"
     },
     {
         id: 2,
-        src: "/assets/hero/slide-2.webp", // SUBSTITUIR
+        src: "assets/hero/slide-2.webp", // SUBSTITUIR
         alt: "Descricao da imagem 2",
         type: "image",
     },
     {
         id: 3,
-        src: "/assets/hero/slide-3.webp", // SUBSTITUIR
+        src: "assets/hero/slide-3.webp", // SUBSTITUIR
         alt: "Descricao da imagem 3",
         type: "image",
     },
