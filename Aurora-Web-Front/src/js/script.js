@@ -434,14 +434,60 @@ function iniciarFormulario() {
 }
 function iniciarQuiz() {
     const container = document.getElementById("quiz-container");
-    if(!container) return;
+
+    if (!container) return;
 
     const perguntas = [
         {
             pergunta: "Quanto tempo dura a noite lunar em dias na Terra?",
             alternativas: ["1 dia", "14 dias", "5 dias", "16 dias"],
             correta: 1
-        }
+        },
+        {
+            pergunta: "Qual e o ODS primario da AURORA?",
+            alternativas: ["ODS 4", "ODS 7", "ODS 9", "ODS 15"],
+            correta: 2
+        },
+        {
+            pergunta: "Qual sensor simula o Sol no circuito?",
+            alternativas: ["LDR", "Servo motor", "LED", "Buzzer"],
+            correta: 0
+        },
+        {
+            pergunta: "Qual erro famoso da Apollo 11 inspira a AURORA?",
+            alternativas: ["Alarme 1202", "Erro 404", "Falha 500", "Codigo 13"],
+            correta: 0
+        },
+        {
+            pergunta: "Qual funcao modela a descarga da bateria?",
+            alternativas: ["Linear", "Quadratica", "Exponencial", "Logaritmica"],
+            correta: 2
+        },
+        {
+            pergunta: "O que o sistema corta primeiro em emergencia?",
+            alternativas: ["Suporte a vida", "Comunicacao principal", "Cargas nao essenciais", "Sensores criticos"],
+            correta: 2
+        },
+        {
+            pergunta: "Qual o tamanho estimado da economia espacial global ate 2030?",
+            alternativas: ["US$ 1 bilhao", "US$ 100 bilhoes", "Aproximadamente US$ 1 trilhao", "US$ 10 trilhoes"],
+            correta: 2
+        },
+        {
+            pergunta: "Qual programa da NASA promove o retorno humano a Lua?",
+            alternativas: ["Apollo", "Artemis", "Gemini", "Mercury"],
+            correta: 1
+        },
+        {
+            pergunta: "Qual atuador corta a carga fisicamente no circuito?",
+            alternativas: ["LDR", "Buzzer", "Servo motor", "Display LCD"],
+            correta: 2
+        },
+        {
+            pergunta: "Qual aplicacao da AURORA existe na Terra?",
+            alternativas: ["Rede social", "Microgrid off-grid", "Marketplace", "Streaming de video"],
+            correta: 1
+        },
     ];
 
     let perguntaAtual = 0;
@@ -455,12 +501,12 @@ function iniciarQuiz() {
             <div class="quiz__alternativas"></div>
         `;
         const areaAlternativas = container.querySelector(".quiz__alternativas");
-        item.alternativas.forEach(function(alternativa, indice){
+        item.alternativas.forEach(function (alternativa, indice) {
             const botao = document.createElement("button");
             botao.type = "button";
             botao.textContent = alternativa;
             botao.classList.add("quiz__alternativa");
-            botao.addEventListener("click", function(){
+            botao.addEventListener("click", function () {
                 responder(indice, botao);
             });
             areaAlternativas.appendChild(botao);
@@ -469,12 +515,43 @@ function iniciarQuiz() {
 
     function responder(indiceEscolhido, botaoEscolhido) {
         const indiceCorreto = perguntas[perguntaAtual].correta;
+        const botoes = container.querySelectorAll(".quiz__alternativa");
+
+        botoes.forEach(function (botao) {
+            botao.disabled = true;
+        });
+
         if (indiceEscolhido === indiceCorreto) {
             botaoEscolhido.classList.add("correta");
             pontuacao++;
         } else {
             botaoEscolhido.classList.add("errada");
+            botoes[indiceCorreto].classList.add("correta");
         }
+
+        setTimeout(function () {
+            perguntaAtual++;
+
+            if (perguntaAtual < perguntas.length) {
+                mostrarPergunta();
+            } else {
+                mostrarResultado();
+            }
+        }, 1000);
+    }
+
+    function mostrarResultado() {
+        container.innerHTML = `
+            <h3>Resultado final</h3>
+            <p>Voce acertou ${pontuacao} de ${perguntas.length} perguntas.</p>
+            <button type="button" id="reiniciar-quiz" class="quiz__alternativa">Reiniciar Quiz</button>
+        `;
+
+        document.getElementById("reiniciar-quiz").addEventListener("click", function () {
+            perguntaAtual = 0;
+            pontuacao = 0;
+            mostrarPergunta();
+        });
     }
 
     mostrarPergunta();
