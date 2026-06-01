@@ -1408,6 +1408,70 @@ input[name="tema"] {
     line-height: 1.5;
 }
 
+.link-repo {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 1rem;
+    padding: 0.55rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    color: var(--cyan);
+    font-size: 0.85rem;
+    transition: background-color 200ms ease, border-color 200ms ease, color 200ms ease;
+}
+
+.link-repo::before {
+    margin-right: 0.5rem;
+    content: "↗";
+    font-weight: 700;
+}
+
+.link-repo:hover,
+.link-repo:focus-visible {
+    border-color: var(--cyan);
+    background-color: color-mix(in srgb, var(--cyan) 12%, transparent);
+    color: var(--text);
+    outline: none;
+}
+
+.edge-acoes {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.edge-acoes .hero__cta {
+    margin: 0;
+}
+
+.edge-acoes .link-repo {
+    margin-top: 0;
+}
+
+.circuito {
+    margin-top: 2.5rem;
+    padding: 1rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background-color: var(--bg);
+    transition: background-color 600ms ease, border-color 600ms ease;
+}
+
+.circuito img {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+}
+
+.circuito figcaption {
+    margin-top: 0.8rem;
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    text-align: center;
+}
+
 @media (max-width: 1279px) {
     .estados,
     .componentes {

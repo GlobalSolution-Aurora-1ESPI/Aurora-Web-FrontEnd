@@ -132,6 +132,7 @@
                         <p class="formula__label">Função de descarga da bateria</p>
                         <p class="formula__main">E(t) = 120 · e<sup>−0,067 · t</sup></p>
                         <p class="formula__hint">E(t) é a energia em kWh restante após <strong>t</strong> horas. Começa em 120 kWh e cai exponencialmente.</p>
+                        <a href="https://github.com/GlobalSolution-Aurora-1ESPI/Aurora-DifferentiatedProblemSolving" target="_blank" rel="noopener" class="link-repo">Ver código Python no GitHub</a>
                     </div>
                 </div>
 
@@ -267,7 +268,10 @@
                         <p>A matemática mostra <em>quando</em> agir. O Arduino é quem <em>age</em>, dentro da própria base.</p>
                         <p>Ele lê os sensores a cada meio segundo e decide sozinho. Não dá pra esperar resposta da Terra (são 1,3 segundos de atraso só de luz).</p>
                         <p>Tudo isso roda num simulador online chamado Wokwi. Você abre no navegador e vê o circuito funcionando, sem precisar montar nada físico.</p>
-                        <a href="https://wokwi.com/projects/465189529004507137" target="_blank" rel="noopener" class="hero__cta">Ver simulação ao vivo</a>
+                        <div class="edge-acoes">
+                            <a href="https://wokwi.com/projects/465189529004507137" target="_blank" rel="noopener" class="hero__cta">Ver simulação ao vivo</a>
+                            <a href="https://github.com/GlobalSolution-Aurora-1ESPI/Aurora-Edge" target="_blank" rel="noopener" class="link-repo">Ver código Arduino no GitHub</a>
+                        </div>
                     </div>
 
                     <div class="edge-painel">
@@ -282,6 +286,11 @@
                         </ul>
                     </div>
                 </div>
+
+                <figure class="circuito">
+                    <img src="images/wokwi.png" alt="Circuito da AURORA montado no simulador Wokwi com Arduino Uno, LDR, potenciometro, DHT22, LEDs, buzzer, servo motor e display LCD">
+                    <figcaption>O circuito completo montado no Wokwi. Arduino no centro, sensores à esquerda, LEDs e atuadores à direita.</figcaption>
+                </figure>
 
                 <p class="estados__intro">Os três estados da base, decididos automaticamente:</p>
                 <div class="estados">
@@ -406,6 +415,12 @@
                     <div class="mission-grid__item">
                         <h3>Modelagem Matemática</h3>
                         <p>Função exponencial e geração solar trigonométrica simuladas em Python com numpy e matplotlib.</p>
+                        <a href="https://github.com/GlobalSolution-Aurora-1ESPI/Aurora-DifferentiatedProblemSolving" target="_blank" rel="noopener" class="link-repo">Abrir repositório</a>
+                    </div>
+                    <div class="mission-grid__item">
+                        <h3>Sistema Embarcado</h3>
+                        <p>Arduino Uno com sensores e atuadores, simulado no Wokwi sem precisar de hardware físico.</p>
+                        <a href="https://github.com/GlobalSolution-Aurora-1ESPI/Aurora-Edge" target="_blank" rel="noopener" class="link-repo">Abrir repositório</a>
                     </div>
                 </div>
             </div>
@@ -416,7 +431,7 @@
             <p class="footer__logo">AURORA</p>
             <p class="footer__sub">FIAP · Global Solution 2026 · Engenharia de Software</p>
             <p class="footer__team">
-                Eduardo Bechara Medeiros Craveiro, RM:571081 · Bruno Carreiro Dos Santos, RM:569423 · Gustavo Ferreira Tavares, RM:569928 · Gustavo Moita de Lima, RM:569180 · Felipe Rabelo, RM:570340
+                Eduardo · RM 571081 · Bruno · RM 569423 · Gustavo F. · RM 569928 · Gustavo M. · RM 569180 · Felipe · RM 570340
             </p>
         </footer>
 
