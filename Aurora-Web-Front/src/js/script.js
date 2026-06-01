@@ -1,7 +1,7 @@
 // ========================================================
 // CONFIGURACAO DOS SLIDES - TROQUE AS IMAGENS AQUI
 // ========================================================
-// Coloque as imagens em /assets/hero/ com os nomes sugeridos.
+// Coloque as imagens em /images/ com os nomes sugeridos.
 // Formatos aceitos: .webp (preferido), .jpg, .png ou .mp4.
 // Dimensao recomendada: 2560x1440px (16:9), max 500KB cada.
 // Enquanto a midia nao existir, o site mostra placeholders com gradiente.
@@ -10,20 +10,20 @@
 const SLIDES = [
     {
         id: 1,
-        src: "/assets/hero/slide-1.webp", // SUBSTITUIR
-        alt: "Descricao da imagem 1",
+        src: "images/base.png",
+        alt: "Base lunar iluminada com paineis solares e modulo habitacional",
         type: "image", // "image" ou "video"
     },
     {
         id: 2,
-        src: "/assets/hero/slide-2.webp", // SUBSTITUIR
-        alt: "Descricao da imagem 2",
+        src: "images/base_lunar.png",
+        alt: "Base lunar vista de longe na superficie da Lua",
         type: "image",
     },
     {
         id: 3,
-        src: "/assets/hero/slide-3.webp", // SUBSTITUIR
-        alt: "Descricao da imagem 3",
+        src: "images/sistemas_na_base.png",
+        alt: "Sistemas energeticos monitorando a operacao da base lunar",
         type: "image",
     },
 ];
