@@ -934,3 +934,34 @@ input[name="tema"] {
         width: 100%;
     }
 }
+.quiz{
+    padding: 2rem;
+    background-color: var(--navy);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+}
+
+.quiz__alternativas {
+    display: grid;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.quiz__alternativa {
+    padding: 0.9rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background-color: var(--bg);
+    color: var(--text);
+    cursor: pointer;
+}
+
+.quiz__alternativa.correta {
+    border-color: #16a34a;
+    background-color: rgba(22, 163, 74, 0.25);
+}
+
+.quiz__alternativa.errada {
+    border-color: #dc2626;
+    background-color: rgba(220, 38, 38, 0.25);
+}

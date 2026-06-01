@@ -1,0 +1,8 @@
+Integrantes:
+-Eduardo Bechara Medeiros Craveiro, RM:571081
+-Bruno Carreiro Dos Santos, RM:569423
+-Gustavo Ferreira Tavares, RM:569928
+-Gustavo Moita de Lima, RM:569180
+-Felipe Rabelo, RM:570340
+Link do repositório:
+https://github.com/GlobalSolution-Aurora-1ESPI/Aurora-Web-FrontEnd.git
