@@ -9,19 +9,21 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Inter:wght@400;600&display=swap" rel="stylesheet">
     
-    <link rel="stylesheet" href="src/css/style.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body id="topo">
-    <!-- SELETOR DE TEMAS (radio inputs hidden — CSS puro, sem JS) -->
+    <!-- Inputs de rádio para controlar os temas via CSS puro.
+         Ficam invisíveis na página, mas o CSS usa o :checked para trocar as cores. -->
     <input type="radio" id="tema-dia" name="tema">
     <input type="radio" id="tema-noite" name="tema" checked>
     <input type="radio" id="tema-alerta" name="tema">
 
     <div class="page-wrapper">
 
-        <!-- MENU DE NAVEGAÇÃO -->
+        <!-- Menu fixo no topo com links para cada seção da página e botões de tema -->
         <nav class="nav">
-            <a href="#topo" class="nav__logo" aria-label="Voltar ao inicio">AURORA</a>
+            <a href="#topo" class="nav__logo" aria-label="Voltar ao início">AURORA</a>
             <ul class="nav__links">
                 <li><a href="#problema">Problema</a></li>
                 <li><a href="#tecnologia">Tecnologia</a></li>
@@ -40,8 +42,8 @@
             </div>
         </nav>
 
-        <!-- HERO (slideshow cinematografico) -->
-        <header class="hero" role="region" aria-roledescription="carousel" aria-label="Slideshow cinematografico AURORA">
+        <!-- Seção hero — ocupa a tela toda e exibe o slideshow de imagens com o título principal -->
+        <header class="hero" role="region" aria-roledescription="carousel" aria-label="Slideshow cinematográfico AURORA">
             <div class="hero__slideshow" data-hero-slideshow>
                 <div class="hero__slides" data-hero-slides></div>
                 <div class="hero__overlay" aria-hidden="true"></div>
@@ -55,7 +57,7 @@
                         <path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </button>
-                <button class="hero__arrow hero__arrow--next" type="button" aria-label="Proximo slide" data-hero-next>
+                <button class="hero__arrow hero__arrow--next" type="button" aria-label="Próximo slide" data-hero-next>
                     <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                         <path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
@@ -72,7 +74,7 @@
             </div>
         </header>
 
-        <!-- SEÇÃO 1: PROBLEMA -->
+        <!-- Seção 1: Problema — explica o desafio da noite lunar de 14 dias -->
         <section id="problema" class="section section--alt">
             <div class="section__inner">
                 <h2 class="section__title">A Noite Mais Longa</h2>
@@ -82,13 +84,13 @@
                         <p>Bases do programa Artemis precisam de gestão energética autônoma para sobreviver.</p>
                     </div>
                     <div class="section__img">
-                        <img src="images/base_lunar.png" alt="Base lunar com painéis solares no horizonte">
+                        <img src="img/base_lunar.png" alt="Base lunar com painéis solares no horizonte">
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- SEÇÃO 2: TECNOLOGIA -->
+        <!-- Seção 2: Tecnologia — descreve o sistema embarcado com Arduino e Python -->
         <section id="tecnologia" class="section">
             <div class="section__inner">
                 <h2 class="section__title">O Sistema Embarcado</h2>
@@ -98,13 +100,13 @@
                         <p>Um sistema que decide e age sozinho — sem precisar de intervenção humana.</p>
                     </div>
                     <div class="section__img">
-                        <img src="images/sistemas_na_base.png" alt="Console de operações AURORA exibindo dados da base">
+                        <img src="img/sistemas_na_base.png" alt="Console de operações AURORA exibindo dados da base">
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- SEÇÃO 3: OBJETIVOS -->
+        <!-- Seção 3: Objetivos — mostra os 3 pilares da missão AURORA em cards -->
         <section id="objetivos" class="section section--alt">
             <div class="section__inner">
                 <h2 class="section__title">Missão AURORA</h2>
@@ -128,7 +130,7 @@
             </div>
         </section>
 
-        <!-- SEÇÃO 4: PÚBLICO -->
+        <!-- Seção 4: Público-alvo — para quem o sistema foi desenvolvido -->
         <section id="publico" class="section">
             <div class="section__inner">
                 <h2 class="section__title">Para Quem Voamos</h2>
@@ -138,13 +140,13 @@
                         <p>E comunidades isoladas na Terra com energia solar e sem acesso à rede elétrica.</p>
                     </div>
                     <div class="section__img">
-                        <img src="images/base.png" alt="Painéis solares apagados durante a noite lunar">
+                        <img src="img/base.png" alt="Painéis solares apagados durante a noite lunar">
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- SEÇÃO 5: BENEFÍCIOS -->
+        <!-- Seção 5: Benefícios — vantagens do sistema em 3 cards -->
         <section id="beneficios" class="section section--alt">
             <div class="section__inner">
                 <h2 class="section__title">Falhar com Elegância</h2>
@@ -168,7 +170,7 @@
             </div>
         </section>
 
-        <!-- SEÇÃO 6: APLICAÇÃO -->
+        <!-- Seção 6: Aplicação — como o sistema funciona na prática em 4 passos -->
         <section id="aplicacao" class="section">
             <div class="section__inner">
                 <h2 class="section__title">AURORA na Prática</h2>
@@ -186,7 +188,7 @@
                 </div>
             </div>
         </section>
-        <!-- SEÇÃO 7: QUIZ-->
+        <!-- Seção do quiz — o conteúdo é gerado dinamicamente pelo JavaScript -->
         <section id="quiz" class="section">
             <div class="section__inner">
                 <h2 class="section__title">Teste seus conhecimentos sobre a Missão AURORA</h2>
@@ -194,20 +196,20 @@
             </div>
         </section>
 
-        <!-- FORMULARIO VALIDADO COM JAVASCRIPT -->
+        <!-- Formulário de contato com validação feita em JavaScript puro -->
         <section id="contato" class="section section--alt">
             <div class="section__inner">
-                <h2 class="section__title">Junte-se a missao AURORA</h2>
+                <h2 class="section__title">Junte-se à missão AURORA</h2>
                 <div class="section__content">
                     <div class="section__text">
-                        <p>Quer acompanhar a missao ou contribuir com ideias para o sistema AURORA?</p>
-                        <p>Preencha o formulario abaixo para entrar em contato com a equipe.</p>
+                        <p>Quer acompanhar a missão ou contribuir com ideias para o sistema AURORA?</p>
+                        <p>Preencha o formulário abaixo para entrar em contato com a equipe.</p>
                     </div>
 
                     <form id="form-missao" class="form-missao" novalidate>
-                        <input type="text" id="nome" name="nome" placeholder="Seu nome" required>
-                        <input type="email" id="email" name="email" placeholder="Seu e-mail" required>
-                        <textarea id="mensagem" name="mensagem" placeholder="Sua mensagem" required></textarea>
+                        <input type="text" id="nome" name="nome" placeholder="Seu nome">
+                        <input type="email" id="email" name="email" placeholder="Seu e-mail">
+                        <textarea id="mensagem" name="mensagem" placeholder="Sua mensagem"></textarea>
                         <button type="submit">Enviar mensagem</button>
                         <p id="form-feedback" class="form-feedback" aria-live="polite"></p>
                     </form>
@@ -215,7 +217,7 @@
             </div>
         </section>
 
-        <!-- RODAPÉ -->
+        <!-- Rodapé com nome e RM de todos os integrantes da equipe -->
         <footer class="footer">
             <p class="footer__logo">AURORA</p>
             <p class="footer__sub">FIAP · Global Solution 2026 · Engenharia de Software</p>
@@ -224,7 +226,7 @@
             </p>
         </footer>
 
-    </div><!-- fim .page-wrapper -->
+    </div><!-- fim do page-wrapper que envolve toda a página -->
     <script src="src/js/script.js"></script>
 </body>
 </html>

@@ -1,62 +1,101 @@
-// ========================================================
-// CONFIGURACAO DOS SLIDES - TROQUE AS IMAGENS AQUI
-// ========================================================
-// Coloque as imagens em /images/ com os nomes sugeridos.
-// Formatos aceitos: .webp (preferido), .jpg, .png ou .mp4.
-// Dimensao recomendada: 2560x1440px (16:9), max 500KB cada.
-// Enquanto a midia nao existir, o site mostra placeholders com gradiente.
-// ========================================================
+// ============================================================
+// script.js — JavaScript do projeto AURORA
+// Aqui ficam o slideshow, os temas, o formulário e o quiz.
+// ============================================================
 
+// Lista de imagens do slideshow com caminho, texto alternativo e tipo
 const SLIDES = [
     {
         id: 1,
-        src: "images/base.png",
+        src: "img/base.png",
         alt: "Base lunar iluminada com paineis solares e modulo habitacional",
-        type: "image", // "image" ou "video"
+        type: "image", // tipo da mídia: "image" ou "video"
     },
     {
         id: 2,
-        src: "images/base_lunar.png",
+        src: "img/base_lunar.png",
         alt: "Base lunar vista de longe na superficie da Lua",
         type: "image",
     },
     {
         id: 3,
-        src: "images/sistemas_na_base.png",
+        src: "img/sistemas_na_base.png",
         alt: "Sistemas energeticos monitorando a operacao da base lunar",
         type: "image",
     },
 ];
 
+// Duração de cada slide em milissegundos (7s normal, 4s no tema alerta)
 const SLIDE_DURATION = 7000;
 const ALERT_SLIDE_DURATION = 4000;
-const PLACEHOLDER_SLIDE_DURATION = 20000;
+const PLACEHOLDER_SLIDE_DURATION = 20000; // Mais tempo se a imagem não carregar
 const PLACEHOLDERS = [
     "linear-gradient(135deg, #061021 0%, #0D1B2A 48%, #FF6B1A 140%)",
     "linear-gradient(135deg, #0A1428 0%, #123455 52%, #FF6B1A 118%)",
     "linear-gradient(135deg, #040814 0%, #152742 45%, #7A2F18 100%)",
 ];
+// Direção do movimento do efeito Ken Burns para cada slide
 const KEN_BURNS_MOVES = [
     { x: "-2%", y: "1%" },
     { x: "2%", y: "-1%" },
     { x: "-1.5%", y: "-2%" },
 ];
 
+// Espera o HTML carregar completamente antes de rodar o JavaScript
 document.addEventListener("DOMContentLoaded", function () {
-    iniciarTemas();
-    iniciarSlideshow();
-    iniciarFormulario();
-    iniciarQuiz();
+    iniciarTemas();      // Configura a troca de temas
+    iniciarSlideshow();  // Monta e anima o slideshow do hero
+    iniciarFormulario(); // Configura a validação do formulário
+    iniciarQuiz();       // Monta o quiz com as 10 perguntas
 });
 
+// Cores de cada tema — usadas pelo JS para alterar as variáveis CSS dinamicamente
+const TEMAS = {
+    "tema-dia": {
+        "--bg": "#F4F1EA",
+        "--navy": "#E6E0D4",
+        "--amber": "#FF6B1A",
+        "--text": "#162238",
+        "--text-muted": "#4E5D73",
+        "--border": "#CFC6B8",
+    },
+    "tema-noite": {
+        "--bg": "#0A1428",
+        "--navy": "#0D1B2A",
+        "--amber": "#FF6B1A",
+        "--text": "#E6EAF2",
+        "--text-muted": "#8A9BB0",
+        "--border": "#1E3A5F",
+    },
+    "tema-alerta": {
+        "--bg": "#1A0000",
+        "--navy": "#0D0000",
+        "--amber": "#FF4444",
+        "--text": "#FFF1F0",
+        "--text-muted": "#FFBDB7",
+        "--border": "#5E1717",
+    },
+};
+
+// Função que detecta qual tema foi selecionado e aplica as cores via JavaScript
 function iniciarTemas() {
     const pagina = document.querySelector(".page-wrapper");
     const botoesTema = document.querySelectorAll('input[name="tema"]');
 
     if (!pagina || !botoesTema.length) return;
 
+    // Aplica o tema escolhido alterando as variáveis CSS no elemento raiz da página
     function trocarTema(idTema) {
         pagina.dataset.theme = idTema.replace("tema-", "");
+
+        const vars = TEMAS[idTema];
+        if (vars) {
+            // Percorre cada variável CSS do tema e aplica no documento
+            Object.keys(vars).forEach(function (prop) {
+                document.documentElement.style.setProperty(prop, vars[prop]);
+            });
+        }
+
         document.dispatchEvent(
             new CustomEvent("aurora:tema", {
                 detail: { idTema: idTema },
@@ -77,6 +116,7 @@ function iniciarTemas() {
     });
 }
 
+// Função principal do slideshow — cria os slides, dots e controla a navegação
 function iniciarSlideshow() {
     const root = document.querySelector("[data-hero-slideshow]");
     const slidesContainer = document.querySelector("[data-hero-slides]");
@@ -89,13 +129,14 @@ function iniciarSlideshow() {
 
     if (!root || !slidesContainer || !dotsContainer || !progressBar) return;
 
-    let slideAtual = 0;
-    let rafId = null;
-    let iniciouEm = 0;
-    let tempoPausado = 0;
-    let pausadoPorHover = false;
-    let pausadoPorAba = false;
-    let touchStartX = 0;
+    // Variáveis de controle do slideshow
+    let slideAtual = 0;         // Índice do slide visível no momento
+    let rafId = null;           // ID da animação em andamento
+    let iniciouEm = 0;          // Momento em que o progresso começou
+    let tempoPausado = 0;       // Quanto tempo ficou pausado
+    let pausadoPorHover = false; // Pausa quando o mouse está em cima
+    let pausadoPorAba = false;  // Pausa quando a aba não está visível
+    let touchStartX = 0;        // Posição inicial do toque (swipe)
     let touchStartY = 0;
     const midiasCarregadas = SLIDES.map(function () {
         return false;
@@ -217,6 +258,7 @@ function iniciarSlideshow() {
         iniciarProgresso(true);
     }
 
+    // Cria o elemento HTML de cada slide e adiciona a imagem ou vídeo
     function criarSlide(slide, index) {
         const slideElement = document.createElement("article");
         slideElement.className = "hero__slide";
@@ -282,11 +324,13 @@ function iniciarSlideshow() {
         return slideElement;
     }
 
+    // Vai para o slide do índice informado e reinicia o progresso
     function irParaSlide(index) {
         ativarSlide(index);
         iniciarProgresso(true);
     }
 
+    // Ativa o slide do índice calculado e atualiza os dots de navegação
     function ativarSlide(index) {
         slideAtual = (index + SLIDES.length) % SLIDES.length;
 
@@ -314,6 +358,7 @@ function iniciarSlideshow() {
         preloadProximoSlide();
     }
 
+    // Avança automaticamente para o próximo slide quando o tempo acaba
     function avancarSlide() {
         ativarSlide(slideAtual + 1);
         iniciarProgresso(true);
@@ -356,6 +401,7 @@ function iniciarSlideshow() {
         rafId = requestAnimationFrame(animarProgresso);
     }
 
+    // Atualiza a barra de progresso a cada frame e avança o slide quando chegar a 100%
     function animarProgresso(agora) {
         const duracao = obterDuracaoAtual();
         const decorrido = tempoPausado + agora - iniciouEm;
@@ -392,6 +438,7 @@ function iniciarSlideshow() {
         }
     }
 
+    // Carrega a próxima imagem em segundo plano para evitar travamento na transição
     function preloadProximoSlide() {
         const proximo = SLIDES[(slideAtual + 1) % SLIDES.length];
 
@@ -407,45 +454,65 @@ function iniciarSlideshow() {
     }
 }
 
+// Função de validação do formulário — feita em JavaScript puro, sem usar o "required" do HTML
 function iniciarFormulario() {
     const formulario = document.getElementById("form-missao");
     const feedback = document.getElementById("form-feedback");
 
     if (!formulario) return;
 
-    formulario.addEventListener("submit", function (event) {
-        event.preventDefault();
+    // Mostra a mensagem de erro em vermelho no parágrafo de feedback
+    function mostrarErro(mensagem) {
+        if (feedback) {
+            feedback.style.color = "#FF7A7A";
+            feedback.textContent = mensagem;
+        }
+    }
 
-        if (!formulario.checkValidity()) {
-            formulario.classList.add("tentou-enviar");
-            if (feedback) {
-                feedback.textContent = "Preencha todos os campos corretamente.";
-            }
+    // Mostra a mensagem de sucesso em verde quando o envio é válido
+    function mostrarSucesso(mensagem) {
+        if (feedback) {
+            feedback.style.color = "";
+            feedback.textContent = mensagem;
+        }
+    }
+
+    // Intercepta o envio do formulário e valida cada campo manualmente
+    formulario.addEventListener("submit", function (event) {
+        event.preventDefault(); // Impede a página de recarregar ao enviar
+
+        // Pega o valor de cada campo e remove espaços extras nas bordas
+        const nome = document.getElementById("nome").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const mensagem = document.getElementById("mensagem").value.trim();
+
+        // Verifica cada campo e para na primeira falha
+        if (!nome) {
+            mostrarErro("Nome é obrigatório.");
             return;
         }
 
-        formulario.classList.remove("tentou-enviar");
+        if (!email || !email.includes("@")) {
+            mostrarErro("E-mail inválido.");
+            return;
+        }
 
-        const dadosFormulario = {
-            nome: document.getElementById("nome").value,
-            email: document.getElementById("email").value,
-            mensagem: document.getElementById("mensagem").value,
-        };
-
-        console.log("Dados do formulario:", dadosFormulario);
+        if (!mensagem) {
+            mostrarErro("Mensagem obrigatória.");
+            return;
+        }
 
         formulario.reset();
-
-        if (feedback) {
-            feedback.textContent = "Mensagem realizada com sucesso. Agradecemos seu contato!";
-        }
+        mostrarSucesso("Mensagem enviada! Bem-vindo à missão AURORA.");
     });
 }
+// Função do quiz — renderiza as perguntas dinamicamente e controla a pontuação
 function iniciarQuiz() {
     const container = document.getElementById("quiz-container");
 
     if (!container) return;
 
+    // Array com as 10 perguntas — cada objeto tem pergunta, alternativas e índice da correta
     const perguntas = [
         {
             pergunta: "Quanto tempo dura a noite lunar em dias na Terra?",
@@ -453,7 +520,7 @@ function iniciarQuiz() {
             correta: 1
         },
         {
-            pergunta: "Qual e o ODS primario da AURORA?",
+            pergunta: "Qual é o ODS primário da AURORA?",
             alternativas: ["ODS 4", "ODS 7", "ODS 9", "ODS 15"],
             correta: 2
         },
@@ -464,26 +531,26 @@ function iniciarQuiz() {
         },
         {
             pergunta: "Qual erro famoso da Apollo 11 inspira a AURORA?",
-            alternativas: ["Alarme 1202", "Erro 404", "Falha 500", "Codigo 13"],
+            alternativas: ["Alarme 1202", "Erro 404", "Falha 500", "Código 13"],
             correta: 0
         },
         {
-            pergunta: "Qual funcao modela a descarga da bateria?",
-            alternativas: ["Linear", "Quadratica", "Exponencial", "Logaritmica"],
+            pergunta: "Qual função modela a descarga da bateria?",
+            alternativas: ["Linear", "Quadrática", "Exponencial", "Logarítmica"],
             correta: 2
         },
         {
-            pergunta: "O que o sistema corta primeiro em emergencia?",
-            alternativas: ["Suporte a vida", "Comunicacao principal", "Cargas nao essenciais", "Sensores criticos"],
+            pergunta: "O que o sistema corta primeiro em emergência?",
+            alternativas: ["Suporte à vida", "Comunicação principal", "Cargas não essenciais", "Sensores críticos"],
             correta: 2
         },
         {
-            pergunta: "Qual o tamanho estimado da economia espacial global ate 2030?",
-            alternativas: ["US$ 1 bilhao", "US$ 100 bilhoes", "Aproximadamente US$ 1 trilhao", "US$ 10 trilhoes"],
+            pergunta: "Qual o tamanho estimado da economia espacial global até 2030?",
+            alternativas: ["US$ 1 bilhão", "US$ 100 bilhões", "Aproximadamente US$ 1 trilhão", "US$ 10 trilhões"],
             correta: 2
         },
         {
-            pergunta: "Qual programa da NASA promove o retorno humano a Lua?",
+            pergunta: "Qual programa da NASA promove o retorno humano à Lua?",
             alternativas: ["Apollo", "Artemis", "Gemini", "Mercury"],
             correta: 1
         },
@@ -493,15 +560,16 @@ function iniciarQuiz() {
             correta: 2
         },
         {
-            pergunta: "Qual aplicacao da AURORA existe na Terra?",
-            alternativas: ["Rede social", "Microgrid off-grid", "Marketplace", "Streaming de video"],
+            pergunta: "Qual aplicação da AURORA existe na Terra?",
+            alternativas: ["Rede social", "Microgrid off-grid", "Marketplace", "Streaming de vídeo"],
             correta: 1
         },
     ];
 
-    let perguntaAtual = 0;
-    let pontuacao = 0;
+    let perguntaAtual = 0; // Controla qual pergunta está sendo exibida
+    let pontuacao = 0;     // Conta quantas respostas certas o usuário deu
 
+    // Renderiza a pergunta atual no HTML com seus botões de alternativa
     function mostrarPergunta() {
         const item = perguntas[perguntaAtual];
         container.innerHTML = `
@@ -522,6 +590,7 @@ function iniciarQuiz() {
         });
     }
 
+    // Verifica se a resposta está certa e mostra feedback visual (verde ou vermelho)
     function responder(indiceEscolhido, botaoEscolhido) {
         const indiceCorreto = perguntas[perguntaAtual].correta;
         const botoes = container.querySelectorAll(".quiz__alternativa");
@@ -549,10 +618,11 @@ function iniciarQuiz() {
         }, 1000);
     }
 
+    // Exibe a pontuação final e o botão para reiniciar o quiz do zero
     function mostrarResultado() {
         container.innerHTML = `
             <h3>Resultado final</h3>
-            <p>Voce acertou ${pontuacao} de ${perguntas.length} perguntas.</p>
+            <p>Você acertou ${pontuacao} de ${perguntas.length} perguntas.</p>
             <button type="button" id="reiniciar-quiz" class="quiz__alternativa">Reiniciar Quiz</button>
         `;
 
