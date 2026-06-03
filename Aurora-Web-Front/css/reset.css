@@ -1,0 +1,90 @@
+/* ============================================================
+   reset.css — Zerando os estilos padrão do navegador
+
+   Cada navegador tem seus próprios estilos padrão que mudam
+   a aparência da página sem a gente pedir. Esse arquivo remove
+   tudo isso pra gente começar do zero com o visual.
+   ============================================================ */
+
+/* Remove espaçamento e borda padrão de todos os elementos HTML */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+/* Garante que tags do HTML5 funcionem como blocos normais */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+/* O navegador coloca espaço extra entre linhas, a gente zera aqui */
+body {
+    line-height: 1;
+}
+
+/* Remove os marcadores de lista (bolinhas, números) */
+ol, ul {
+    list-style: none;
+}
+
+/* Remove as aspas automáticas de elementos de citação */
+blockquote, q {
+    quotes: none;
+}
+
+blockquote::before, blockquote::after,
+q::before, q::after {
+    content: '';
+    content: none;
+}
+
+/* Tabelas ficam sem espaço entre as células */
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/* Faz o cálculo de tamanho dos elementos funcionar de forma mais previsível */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/* Impede que imagens saiam do limite do elemento pai */
+img {
+    display: block;
+    max-width: 100%;
+}
+
+/* Links herdam a cor do texto e removemos o sublinhado */
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* Botões herdam a fonte da página */
+button {
+    font: inherit;
+    cursor: pointer;
+}
+
+/* Campos de formulário também herdam a fonte da página */
+input, textarea, select {
+    font: inherit;
+}
